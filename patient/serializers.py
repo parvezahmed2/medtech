@@ -31,4 +31,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
         account.set_password(password) 
         account.save()
         return account 
-        
+
+
+
+class UserLoginSerializer(serializers.Serializer):
+    username = serializers.CharField(required = True)
+    password = serializers.CharField(required = True) 

@@ -5,7 +5,8 @@ from . import models
 from . import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from django.contrib.auth import authenticate 
+from rest_framework.authtoken.models import Token
 
 class PatientViewset(viewsets.ModelViewSet):
     queryset = models.Patient.objects.all()
@@ -23,3 +24,23 @@ class UserRegistrationApiView(APIView):
             user = serializers.save()
             return Response("done")
         return Response("done")     
+    
+
+class UserLoginApiView(APIView):
+    def post(self, request):
+        serializer = serializers.UserLoginSerializer(data = self.request.data)  # user jei data diye request korbe 
+        if serializer.is_valid():
+            username = serializer.validated_data['username']
+            password = serializer.validated_data['password']
+            
+            user = authenticate(username = username, password = password)
+            if user:
+                token, _ = Token.objects.get_or_create(user = user)  # ei username or pass diye kono token database ase ki na 
+                return Response({'token': token.key, 'user_id': user.id}) 
+            else:
+                return Response({'error' : "Invalid Credential"})
+        return Response(serializer.errors) 
+
+
+
+ 
