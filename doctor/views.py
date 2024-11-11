@@ -6,23 +6,23 @@ from . import serializers
 
 
 class SpecializationViewset(viewsets.ModelViewSet):
-    queryset = models.Specialization.all()
+    queryset = models.Specialization.objects.all()
     serializer_class = serializers.SpecializationSerializer
 
 class DesignationViewset(viewsets.ModelViewSet):
-    queryset = models.Designation.all()
+    queryset = models.Designation.objects.all()
     serializer_class = serializers.DesignationSerializer
 
 class AvailableViewset(viewsets.ModelViewSet):
-    queryset = models.AvailableTime.all()
+    queryset = models.AvailableTime.objects.all()
     serializer_class = serializers.AvailableTimeSerializer
 
 class DoctorViewset(viewsets.ModelViewSet):
-    queryset = models.Doctor.all()
+    queryset = models.Doctor.objects.all()
     serializer_class = serializers.DoctorSerializer
 
 
 class ReviewViewset(viewsets.ModelViewSet):
-    queryset = models.Review.all()
+    queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
 

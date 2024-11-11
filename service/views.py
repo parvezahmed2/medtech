@@ -6,5 +6,5 @@ from . import serializers
 
 
 class ServiceViewset(viewsets.ModelViewSet):
-    queryset = models.Service.all()  # data query kore niye aste parbo
+    queryset = models.Service.objects.all()  # data query kore niye aste parbo
     serializer_class = serializers.ServiceSerializer  #query kora data ke json convert kora 

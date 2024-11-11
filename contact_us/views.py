@@ -6,6 +6,6 @@ from . import serializers
 
 
 class ContactViewset(viewsets.ModelViewSet):
-    queryset = models.ContactUs.all()
+    queryset = models.ContactUs.objects.all()
     serializer_class = serializers.ContactUsSerializer
 
