@@ -15,7 +15,7 @@ class DoctorSerializer(serializers.ModelSerializer):
     available_time = serializers.StringRelatedField(many=True) 
     class Meta:
         model = models.Doctor
-        fields = '__all__'
+        fields = '__all__' 
         
 class SpecializationSerializer(serializers.ModelSerializer):
     class Meta:
